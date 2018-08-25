@@ -3,8 +3,8 @@ package com.np.dsa.crux;
 import java.util.Scanner;
 
 import com.np.dsa.utils.ScannerUtils;
-
-public class CoinChangeDP {
+//Has been written for only array of size 3.
+public class CoinChangeDPPerformance {
 
 	private static int[] auxArray;
 
@@ -19,7 +19,7 @@ public class CoinChangeDP {
 			long start = System.currentTimeMillis();
 			auxArray = new int[n+1];
 			auxArray[0] = 1;
-			System.out.println(count(arr, n));
+			System.out.println("Number of ways in which coin can be changed is: " + count(arr, n));
 			long end = System.currentTimeMillis();
 			System.out.println("Time taken for n = " + i + ": "  + (end - start));
 		}

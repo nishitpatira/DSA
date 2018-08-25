@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 import com.np.dsa.utils.ScannerUtils;
 
-public class CoinChangeRecursion {
+public class CoinChangeRecursionPerformance {
 
 	public static void main(String[] args) {
 		
@@ -29,8 +29,12 @@ public class CoinChangeRecursion {
 
 		if (n < 0)
 			return 0;
-
-		return count(array , n - 1) + count(array , n - 2) + count(array , n - 3);
+		
+		int count = 0;
+		for(int i = 0 ; i < array.length ; i++){
+			count += count(array, n - array[i]);
+		}
+		return count;
 	}
 
 }

@@ -1,6 +1,6 @@
 package com.np.dsa.crux;
 
-import java.util.Comparator;
+import java.util.Collections;
 import java.util.PriorityQueue;
 
 public class MedianOfStream {
@@ -15,17 +15,14 @@ public class MedianOfStream {
 
 	private static double[] getContinuousMedians(int[] array) {
 		double[] medians = new double[array.length];
-		PriorityQueue<Integer> lowers = new PriorityQueue<>(new Comparator<Integer>() {
-			public int compare(Integer a, Integer b) {
-				return -1 * a.compareTo(b);
-			}
-		});
-		PriorityQueue<Integer> highers = new PriorityQueue<>();
+		
+		PriorityQueue<Integer> maxHeap = new PriorityQueue<Integer>(10, Collections.reverseOrder());
+		PriorityQueue<Integer> minHeap = new PriorityQueue<>();
 		for (int i = 0; i < array.length; i++) {
 			int num = array[i];
-			addNumber(num, lowers, highers);
-			rebalance(lowers, highers);
-			medians[i] = getMedian(lowers, highers);
+			addNumber(num, maxHeap, minHeap);
+			rebalance(maxHeap, minHeap);
+			medians[i] = getMedian(maxHeap, minHeap);
 		}
 		return medians;
 	}

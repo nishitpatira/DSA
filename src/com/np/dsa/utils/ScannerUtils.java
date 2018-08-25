@@ -75,7 +75,6 @@ public class ScannerUtils {
 		}
 		// scanner.close();
 		return array;
-
 	}
 
 }

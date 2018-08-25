@@ -45,5 +45,35 @@ public class Utils {
 		}
 		return hashValue;
 	}
+	
+	public static int findGCD(int num1, int num2){
+		if(num1 == 0){
+			return num2;
+		}
+		if(num2 == 0){
+			return num1;
+		}
+		int bigger = num1 > num2 ? num1 : num2;
+		int smaller = num1 > num2 ? num2 : num1;
+		int temp = 0;
+		if(bigger == smaller){
+			return smaller;
+		}
+		while(smaller != 1){
+			bigger = bigger - smaller;
+			if(bigger < smaller){
+				temp = bigger;
+				bigger = smaller;
+				smaller = temp;
+			}
+			if(bigger == smaller){
+				return smaller;
+			}
+		}
+		return 1;
+	}
+	
+	
+	
 
 }
