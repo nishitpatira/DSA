@@ -1,6 +1,5 @@
 package com.np.dsa.crux;
 
-import java.util.Queue;
 import java.util.Scanner;
 
 import com.np.dsa.utils.ScannerUtils;
@@ -10,13 +9,14 @@ public class SpiralMatrixPrinting {
 	public static void main(String[] args) {
 		Scanner scanner = new Scanner(System.in);
 		int[][] matrix = ScannerUtils.scanForIntMatrix(scanner);
-		int[][] matrix2 = { {1,2,3},
+		/*int[][] matrix = { {1,2,3},
 				{4,5,6},
 				{7,8,9},
 				{10,11,12},
 				{13,14,15},
-				{16,17,18}};
-		spiralPrint(matrix2);
+				{16,17,18}};*/
+		spiralPrint(matrix);
+		scanner.close();
 	}
 
 	private static void spiralPrint(int[][] matrix) {

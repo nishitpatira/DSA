@@ -3,24 +3,16 @@ package com.nishit.line;
 import java.util.LinkedList;
 import java.util.List;
 
+import com.nishit.leetcode.TiltTree.TreeNode;
+
 public class LevelOrderTraversal {
-
-	static class Node {
-		int val;
-		Node left;
-		Node right;
-
-		public Node(int val) {
-			this.val = val;
-		}
-	}
-
+	
 	public static void main(String[] args) {
-		Node root = new Node(3);
-		root.left = new Node(9);
-		root.right = new Node(20);
-		root.right.left = new Node(15);
-		root.right.right = new Node(7);
+		TreeNode root = new TreeNode(3);
+		root.left = new TreeNode(9);
+		root.right = new TreeNode(20);
+		root.right.left = new TreeNode(15);
+		root.right.right = new TreeNode(7);
 		List<List<Integer>> levelsList = levelOrderTraversal(root);
 		for (List<Integer> heightList : levelsList) {
 			for (Integer val : heightList) {
@@ -30,7 +22,7 @@ public class LevelOrderTraversal {
 		}
 	}
 
-	public static List<List<Integer>> levelOrderTraversal(final Node root) {
+	public static List<List<Integer>> levelOrderTraversal(final TreeNode root) {
 		List<List<Integer>> levelsList = new LinkedList<List<Integer>>();
 		List<Integer> zeroList = new LinkedList<>();
 		levelsList.add(zeroList);
@@ -38,7 +30,7 @@ public class LevelOrderTraversal {
 		return levelsList;
 	}
 
-	private static void levelOrderUtil(final Node root, List<List<Integer>> levelsList, int height) {
+	private static void levelOrderUtil(final TreeNode root, List<List<Integer>> levelsList, int height) {
 		if (root == null) {
 			return;
 		}
