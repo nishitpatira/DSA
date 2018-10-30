@@ -20,14 +20,12 @@ public class ZigZagLevelOrder {
 
 	void printLevelOrder() {
 		int h = height(root);
+		boolean isOdd = true;
 		int i;
-		for (i = 1; i <= h; i++)
-			if (i % 2 == 0) {
-				printGivenLevel(root, i, false);
-			} else {
-				printGivenLevel(root, i, true);
-			}
-
+		for (i = 1; i <= h; i++){
+			printGivenLevel(root, i, isOdd);
+			isOdd = !isOdd;
+		}
 	}
 
 	void printGivenLevel(Node root, int level, boolean isLeftToRight) {

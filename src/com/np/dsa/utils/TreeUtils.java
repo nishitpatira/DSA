@@ -3,6 +3,7 @@ package com.np.dsa.utils;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.nishit.leetcode.TreeNode;
 import com.np.dsa.beans.BinaryTree;
 import com.np.dsa.beans.Node;
 
@@ -66,6 +67,24 @@ public class TreeUtils {
 		path(root.left, array, value);
 		path(root.right, array, value);
 		Utils.removeLastElementFromList(array);
+	}
+	
+	public static void printPreOrder(com.nishit.leetcode.TreeNode root){
+		if(root == null){
+			return;
+		}
+		System.out.println(root.val);
+		printPreOrder(root.left);
+		printPreOrder(root.right);
+	}
+	
+	public static void printInOrder(TreeNode root){
+		if(root == null){
+			return;
+		}
+		printInOrder(root.left);
+		System.out.println(root.val);
+		printInOrder(root.right);
 	}
 	
 	

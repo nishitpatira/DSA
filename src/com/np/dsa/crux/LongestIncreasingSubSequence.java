@@ -26,4 +26,6 @@ public class LongestIncreasingSubSequence {
 		}
 		Utils.printArray(aux);
 	}
+	
+	
 }

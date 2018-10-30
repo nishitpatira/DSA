@@ -16,7 +16,7 @@ public class Utils {
 	public static final void printMatrix(int[][] matrix) {
 		for (int i = 0; i < matrix.length; i++) {
 			for (int j = 0; j < matrix[0].length; j++) {
-				System.out.print(matrix[i][j]);
+				System.out.print(matrix[i][j] + " ");
 			}
 			System.out.println();
 		}
@@ -45,35 +45,67 @@ public class Utils {
 		}
 		return hashValue;
 	}
-	
-	public static int findGCD(int num1, int num2){
-		if(num1 == 0){
+
+	public static int findGCD(int num1, int num2) {
+		if (num1 == 0) {
 			return num2;
 		}
-		if(num2 == 0){
+		if (num2 == 0) {
 			return num1;
 		}
 		int bigger = num1 > num2 ? num1 : num2;
 		int smaller = num1 > num2 ? num2 : num1;
 		int temp = 0;
-		if(bigger == smaller){
+		if (bigger == smaller) {
 			return smaller;
 		}
-		while(smaller != 1){
+		while (smaller != 1) {
 			bigger = bigger - smaller;
-			if(bigger < smaller){
+			if (bigger < smaller) {
 				temp = bigger;
 				bigger = smaller;
 				smaller = temp;
 			}
-			if(bigger == smaller){
+			if (bigger == smaller) {
 				return smaller;
 			}
 		}
 		return 1;
 	}
-	
-	
-	
+
+	public static void transpose(final int[][] matrix) {
+		if (matrix == null || matrix.length == 0 || matrix.length == 1) {
+			return;
+		}
+		final int n = matrix.length;
+		int i = 0;
+		int temp = 0;
+		while (i <= n) {
+			for (int k = i; k < n; k++) {
+				temp = matrix[i][k];
+				matrix[i][k] = matrix[k][i];
+				matrix[k][i] = temp;
+			}
+			i++;
+		}
+	}
+
+	public static void verticalMirror(final int[][] matrix) {
+		if (matrix == null || matrix.length == 0 || matrix.length == 1) {
+			return;
+		}
+		int startColumn = 0;
+		int endColumn = matrix.length - 1;
+		int temp = 0;
+		while (startColumn < endColumn) {
+			for (int i = 0; i < matrix.length; i++) {
+				temp = matrix[i][startColumn];
+				matrix[i][startColumn] = matrix[i][endColumn];
+				matrix[i][endColumn] = temp;
+			}
+			startColumn++;
+			endColumn--;
+		}
+	}
 
 }

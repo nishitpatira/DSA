@@ -2,14 +2,19 @@
  * @author nishit patira
  */
 
+//
+
+//This is WRONG. Finding average price per length won't work
+
 package com.np.dsa.crux;
 
 import java.util.Arrays;
 
-public class RodCutting {
+public class RodCuttingWrong {
 
 	public static void main(String args[]) {
-		int arr[] = new int[] { 3, 5, 8, 9, 10, 17, 17, 20 };
+		//int arr[] = new int[] { 3, 5, 8, 9, 10, 17, 17, 20 };
+		int arr[] = {1,5,8,9,10,17,17,20};
 		int size = arr.length;
 		System.out.println("Maximum Obtainable Value is " + cutRod(arr, size));
 	}

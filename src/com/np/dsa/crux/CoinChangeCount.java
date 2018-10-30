@@ -11,6 +11,7 @@ public class CoinChangeCount {
 		int amount = ScannerUtils.scanForNumber(scanner);
 		int[] coins = ScannerUtils.scanForIntArray(scanner);
 		System.out.println(changeCount(amount, coins));
+		scanner.close();
 	}
 
 	public static int changeCount(final int amount, final int[] coins) {

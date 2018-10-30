@@ -1,6 +1,8 @@
 package com.np.dsa.crux;
 
+import java.util.HashSet;
 import java.util.Scanner;
+import java.util.Set;
 
 public class LongestCommonSequence {
 
@@ -13,17 +15,29 @@ public class LongestCommonSequence {
 	}
 	
 	private static String findLCS(String str1, String str2){
-		
-		if(str1.isEmpty() || str2.isEmpty()){
-			return "";
+		Set<Integer> indexOfStr1 = new HashSet<>();
+		findLCS(str1, str2, 0, 0, indexOfStr1);
+		return populateString(str1,indexOfStr1);
+	}
+	
+	private static void findLCS(final String str1, final String str2, int i, int j, final Set<Integer> indexOfStr1){
+		if(str1.isEmpty() || str2.isEmpty() || i >= str1.length() || j >= str2.length()){
+			return;
 		}
-		if(str1.charAt(0) == str2.charAt(0)){
-			return str1.charAt(0) + findLCS(str1.substring(1), str2.substring(1));
+		if(str1.charAt(i) == str2.charAt(j)){
+			indexOfStr1.add(i);
+			findLCS(str1, str2, i+1, j+1, indexOfStr1);
+		} else {
+			findLCS(str1, str2, i+1, j, indexOfStr1);
+			findLCS(str1, str2, i, j+1, indexOfStr1);
 		}
-		else {
-			String temp1 = findLCS(str1.substring(1), str2.substring(0));
-			String temp2 = findLCS(str1.substring(0), str2.substring(1));
-			return temp1.length() > temp2.length() ? temp1 : temp2;
+	}
+	
+	private static String populateString(final String str1, final Set<Integer> indexSet){
+		final StringBuilder builder = new StringBuilder();
+		for(int elem : indexSet){
+			builder.append(str1.charAt(elem));
 		}
+		return builder.toString();
 	}
 }

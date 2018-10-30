@@ -1,13 +1,14 @@
 package com.nishit.leetcode;
 
-import com.nishit.leetcode.TiltTree.TreeNode;
+import com.np.dsa.utils.TreeUtils;
 
 public class ConstructFullTreeFromPreAndPost {
 
 	public TreeNode constructFromPrePost(int[] pre, int[] post) {
-		/*if (pre.length % 2 == 0 || pre.length != post.length) {
-			return null;
-		}*/
+		/*
+		 * if (pre.length % 2 == 0 || pre.length != post.length) { return null;
+		 * }
+		 */
 		TreeNode root = new TreeNode(pre[0]);
 		boolean[] isPreVisited = new boolean[pre.length];
 		boolean[] isPostVisited = new boolean[post.length];
@@ -23,17 +24,17 @@ public class ConstructFullTreeFromPreAndPost {
 		if (root == null)
 			return;
 		Integer left = findAndMarkLeft(root.val, pre, post, isPreVisited, isPostVisited);
-        Integer right = findAndMarkRight(root.val, pre, post, isPreVisited, isPostVisited);
+		Integer right = findAndMarkRight(root.val, pre, post, isPreVisited, isPostVisited);
 		if (left != null) {
 			TreeNode leftNode = new TreeNode(left);
 			root.left = leftNode;
 			construct(leftNode, pre, post, isPreVisited, isPostVisited);
 		}
-        if(right != null){
-            TreeNode rightNode = new TreeNode(right);
-            root.right = rightNode;
-            construct(rightNode, pre, post, isPreVisited, isPostVisited);
-        }
+		if (right != null) {
+			TreeNode rightNode = new TreeNode(right);
+			root.right = rightNode;
+			construct(rightNode, pre, post, isPreVisited, isPostVisited);
+		}
 
 	}
 
@@ -58,13 +59,13 @@ public class ConstructFullTreeFromPreAndPost {
 
 	private Integer findAndMarkRight(int value, int[] preOrder, int[] postOrder, boolean[] isPreVisited,
 			boolean[] isPostVisited) {
-		for (int i = postOrder.length-1; i > 0; i--) {
+		for (int i = postOrder.length - 1; i > 0; i--) {
 			if (postOrder[i] == value) {
 				if (isPostVisited[i - 1]) {
 					return null;
 				}
 				isPostVisited[i - 1] = true;
-				for (int j =0 ; j <= preOrder.length-1; j++) {
+				for (int j = 0; j <= preOrder.length - 1; j++) {
 					if (preOrder[j] == postOrder[i - 1]) {
 						isPreVisited[j] = true;
 					}
@@ -75,11 +76,13 @@ public class ConstructFullTreeFromPreAndPost {
 		return null;
 
 	}
+
 	public static void main(String[] args) {
 		ConstructFullTreeFromPreAndPost construct = new ConstructFullTreeFromPreAndPost();
-		int[] pre = { 2, 1, 3 };
-		int[] post = { 3, 1, 2 };
-		construct.constructFromPrePost(pre, post);
+		int[] pre = { 1, 2, 4, 8, 9, 5, 3, 6, 7 };
+		int[] post = { 8, 9, 4, 5, 2, 6, 7, 3, 1 };
+		com.nishit.leetcode.TreeNode root = construct.constructFromPrePost(pre, post);
+		TreeUtils.printInOrder(root);
 
 	}
 }
