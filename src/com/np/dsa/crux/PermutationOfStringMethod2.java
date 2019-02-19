@@ -10,6 +10,7 @@ public class PermutationOfStringMethod2 {
 		Scanner scanner = new Scanner(System.in);
 		String input = ScannerUtils.scanForString(scanner);
 		findAllPerms(input);
+		scanner.close();
 	}
 	
 	public static void findAllPerms(String input){

@@ -14,7 +14,7 @@ public class LongestCommonSequence {
 		scanner.close();
 	}
 	
-	private static String findLCS(String str1, String str2){
+	protected static String findLCS(String str1, String str2){
 		Set<Integer> indexOfStr1 = new HashSet<>();
 		findLCS(str1, str2, 0, 0, indexOfStr1);
 		return populateString(str1,indexOfStr1);

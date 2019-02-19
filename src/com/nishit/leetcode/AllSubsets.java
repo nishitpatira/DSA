@@ -18,7 +18,7 @@ public class AllSubsets {
 
 	public List<List<Integer>> subsets(int[] nums) {
 		List<List<Integer>> returnList = new LinkedList<>();
-		subsetsUtil(nums, 0, new LinkedList<>(), returnList);
+		subsetsUtil(nums, 0, new LinkedList<Integer>(), returnList);
 		return returnList;
 	}
 
@@ -31,10 +31,11 @@ public class AllSubsets {
 			}
 			return;
 		}
+		subsetsUtil(nums, index + 1, list, returnList);
 		list.add(nums[index]);
 		subsetsUtil(nums, index + 1, list, returnList);
 		list.remove(list.size() - 1);
-		subsetsUtil(nums, index + 1, list, returnList);
+		
 	}
 
 }
